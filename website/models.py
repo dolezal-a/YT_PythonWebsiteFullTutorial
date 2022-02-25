@@ -1,5 +1,6 @@
 from . import db
 from flask_login import UserMixin
+from sqlalchemy import func
 
 class Note(db.Model):
     id = db.Column(db.Integer, primary_key = True)
@@ -7,9 +8,6 @@ class Note(db.Model):
     date = db.Column(db.DateTime(timezone=True), default=func.now())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
-
-class Reminder(db.Model):
-    
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key = True)
